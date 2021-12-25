@@ -22,6 +22,10 @@ exports.homePage = async (req, res, next) => {
 	}
 };
 
+exports.qrCode = (req, res, next) => {
+	res.render('qrcode');
+}
+
 exports.redirect = async (req, res, next) => {
 	console.log(req);
 	console.log("ID", req.params.id)

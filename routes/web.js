@@ -6,6 +6,7 @@ const ItemController = require('../app/controllers/ItemController');
 const Auth = require('../app/middlewares/isAuth');
 
 router.get('/', HomeController.homePage);
+router.get('/qrcode', HomeController.qrCode);
 router.get('/login', AuthController.loginPage);
 router.post('/login', AuthController.login);
 router.post('/logout', AuthController.logout);
