@@ -1,0 +1,46 @@
+<div class="container">
+	<div style="gap: 0.5rem; font-size: 1.5rem;" class="d-flex flex-wrap align-items-center justify-content-between mb-4 text-center">
+		<span>Hoşgeldiniz, {{user}}</span>
+		<a href="/add"><button href="/add" class="btn btn-outline-primary">Ekle</button></a>
+	</div>
+	<div>
+		<table class="table">
+			<tr>
+				<th>#</th>
+				<th>QR Kod</th>
+				<th>Yönlendirme</th>
+				<th class="text-right">İşlemler</th>
+			</tr>
+			{{#each items}}
+			<tr>
+				<td>
+					{{@index}}
+				</td>
+				<td>
+					{{qrCode}}
+				</td>
+				<td>
+					{{redirectTo}}
+				</td>
+				<td class="text-right">
+					<a href="/edit?id={{id}}"><button class="btn btn-outline-secondary">Düzenle</button></a>
+				</td>
+			</tr>
+			{{else}}
+			<div style="gap: 1rem;" class="d-flex flex-wrap text-center mb-2 align-items-center justify-content-center">
+				<h3>Henüz bir ürününüz yok, şimdi hemen</h3>
+				<a href="/add"><button href="/add" style="font-size: 1.5rem;" class="btn btn-primary">Ekleyin</button></a>
+			</div>
+			{{/each}}
+		</table>
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+
+<script id="template" type="text/x-handlebars-template">
+console.log("hello")
+{{#each items}}
+	console.log({{0}});
+{{/each}}
+</script>

@@ -1,0 +1,69 @@
+<div class="row justify-content-md-center h-100">
+	<div class="card-wrapper">
+		<div class="brand">
+			<a href="/"><img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="logo"></a>
+		</div>
+		<div class="card fat">
+			<div class="card-body">
+				<h4 class="card-title">Kayıt ol</h4>
+				<form id="signUpForm" action="/register" method="POST" class="my-login-validation" novalidate="">
+					<div class="form-group">
+						<label for="name">İsim</label>
+						<input id="name" type="text" class="form-control" name="name" value="{{oldInput.name}}" required autofocus>
+						<div class="invalid-feedback">
+							Adınızı giriniz
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="email">E-Posta adresi</label>
+						<input id="email" type="email" class="form-control" name="email" value="{{oldInput.email}}" required>
+						<input type="hidden" value="{{csrfToken}}" name="_csrf" >
+						<div class="invalid-feedback">
+							Geçersiz e-posta
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="password">Şifre</label>
+						<input id="password" type="password" class="form-control" name="password" required data-eye>
+						<div class="invalid-feedback">
+							Şifre gerekli
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="password">Şifre Onayı</label>
+						<input id="confirm_password" type="password" class="form-control" name="confirm_password" required>
+						<div class="invalid-feedback">
+							Şifre gerekli
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="custom-checkbox custom-control">
+							<input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
+							<label for="agree" class="custom-control-label"><a href="#">Şartlar ve koşulları</a> kabul ediyorum</label>
+							<div class="invalid-feedback" id="errorAgree">
+								Şartlar ve koşulları kabul etmelisiniz
+							</div>
+						</div>
+					</div>
+					{{#if errorMessage}}
+					<div class="alert alert-danger" role="alert">
+						{{errorMessage}}
+					</div>
+					{{/if}}
+					<div class="form-group m-0">
+						<button type="button" id="btnSubmit" class="btn btn-primary btn-block">
+							Kayıt Ol
+						</button>
+					</div>
+					<div class="mt-4 text-center">
+						Zaten bir hesabın var mı? <a href="/login">Hemen girş yap</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

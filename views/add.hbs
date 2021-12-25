@@ -1,0 +1,98 @@
+<div class="row justify-content-md-center h-100">
+	<div class="card-wrapper add-brand">
+		<div style="width: 8rem;" class="brand">
+			<a href="/"><img style="border-radius: 50%;" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="logo"></a>
+		</div>
+		<div class="card fat">
+			<div class="card-body">
+				<h4 class="card-title">Ürün Ekle</h4>
+				<form id="addItemForm" action="/add" method="POST" class="my-login-validation" novalidate="">
+					<div class="form-group">
+						<label for="qrCode">Kutudan Çıkan Sihirli Yazı</label>
+						<input id="qrCode" type="text" class="form-control" name="qrCode" value="{{oldInput.qrCode}}" required autofocus>
+						<div class="invalid-feedback">
+							QR kod bulunamadı
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="redirectTo">Yönlendirme Adresi</label>
+						<input id="redirectTo" type="link" class="form-control" name="redirectTo" value="{{oldInput.redirectTo}}" required>
+						<input type="hidden" value="{{csrfToken}}" name="_csrf" >
+						<div class="invalid-feedback">
+							Geçersiz yönlendirme adresi
+						</div>
+					</div>
+
+					{{#if errorMessage}}
+					<div class="alert alert-danger" role="alert">
+						{{errorMessage}}
+					</div>
+					{{/if}}
+					<div class="form-group m-0">
+						<button type="button" type="submit" id="addSubmit" class="btn btn-primary btn-block">
+							Ekle
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript">
+    $('#addItemForm input').on('keypress', function(){
+        $(this).parent().removeClass('has-error');
+        $('.help-txt').remove();
+    });
+
+    $('#addSubmit').on('click',function(){
+        var is_valid = true;
+        var inpQRCode = $('#qrCode');
+        var inpRedicretTo = $('#redirectTo');
+        $('#addItemForm input').removeClass('has-error');
+        $('.help-txt').remove();
+
+        if(inpQRCode.val() == '') {
+            inpQRCode.parent().addClass('has-error');
+            inpQRCode.focus();
+            inpQRCode.parent().append('<span style="color: red;" class="help-txt">QR kod alanı boş bırakılamaz</span>');
+            is_valid = false;
+        }
+		if(inpRedicretTo.val() == '') {
+            inpRedicretTo.parent().addClass('has-error');
+            inpRedicretTo.focus();
+            inpRedicretTo.parent().append('<span style="color: red;" class="help-txt">Yönlendirme alanı boş bırakılamaz</span>');
+            is_valid = false;
+        }else {
+			if(!isValidHttpUrl(inpRedicretTo.val())) {
+				inpRedicretTo.parent().addClass('has-error');
+				inpRedicretTo.focus();
+				inpRedicretTo.parent().append('<span style="color: red;" class="help-txt">Geçerli bir adres girmediniz</span>');
+				is_valid = false;
+			}
+		}
+        if(is_valid) {
+            var form = $('#addItemForm');
+            var url = form.attr('action');
+            $(this).html('Lütfen bekleyin...');
+            $(this).attr('disabled','disabled');
+            form.submit();
+        } else {
+            return false;
+        }
+    });
+
+	function isValidHttpUrl(string) {
+		let url;
+		try {
+			url = new URL(string);
+		} catch (_) {
+			return false;  
+		}
+		return url.protocol === "http:" || url.protocol === "https:";
+	}
+
+  </script>
