@@ -11,7 +11,7 @@ const Session = sequelize.define("items", {
     },
     buyer: DataTypes.INTEGER,
 	qrCode: DataTypes.STRING,
-    redirectTo: DataTypes.STRING
+    redirectTo: DataTypes.TEXT
 });
 
 module.exports = Session;
