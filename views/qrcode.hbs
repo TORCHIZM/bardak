@@ -13,6 +13,6 @@
 <script type="text/javascript">
 	$('#qrinput').keyup(function() {
 		$('#qrcode').empty();
-		new QRCode(document.getElementById("qrcode"), $('#qrinput').val());
+		new QRCode(document.getElementById("qrcode"), "https://barkodum.app/g/" + $('#qrinput').val());
 	});
 </script>

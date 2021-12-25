@@ -20,7 +20,7 @@
 					{{qrCode}}
 				</td>
 				<td>
-					{{redirectTo}}
+					<p style="line-break: anywhere;">{{redirectTo}}</p>
 				</td>
 				<td class="text-right">
 					<a href="/edit?id={{id}}"><button class="btn btn-outline-secondary">Düzenle</button></a>
@@ -35,12 +35,4 @@
 		</table>
 	</div>
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
-
-<script id="template" type="text/x-handlebars-template">
-console.log("hello")
-{{#each items}}
-	console.log({{0}});
-{{/each}}
 </script>
