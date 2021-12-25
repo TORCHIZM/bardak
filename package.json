@@ -1,7 +1,7 @@
 {
   "name": "vapaa-store",
   "version": "1.0.0",
-  "description": "Vapaa Store QR Shortner",
+  "description": "Barcode QR Shortner",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

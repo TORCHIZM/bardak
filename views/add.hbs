@@ -8,7 +8,7 @@
 				<h4 class="card-title">Ürün Ekle</h4>
 				<form id="addItemForm" action="/add" method="POST" class="my-login-validation" novalidate="">
 					<div class="form-group">
-						<label for="qrCode">Kutudan Çıkan Sihirli Yazı</label>
+						<label for="qrCode">Kutudan Çıkan Aktivasyon Kodunuz</label>
 						<input id="qrCode" type="text" class="form-control" name="qrCode" value="{{oldInput.qrCode}}" required autofocus>
 						<div class="invalid-feedback">
 							QR kod bulunamadı
@@ -16,7 +16,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="redirectTo">Yönlendirme Adresi</label>
+						<label for="redirectTo">Yönlendirmek İstediğiniz Adres</label>
 						<input id="redirectTo" type="link" class="form-control" name="redirectTo" value="{{oldInput.redirectTo}}" required>
 						<input type="hidden" value="{{csrfToken}}" name="_csrf" >
 						<div class="invalid-feedback">
