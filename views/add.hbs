@@ -66,13 +66,6 @@
             inpRedicretTo.focus();
             inpRedicretTo.parent().append('<span style="color: red;" class="help-txt">Yönlendirme alanı boş bırakılamaz</span>');
             is_valid = false;
-        }else {
-			if(!isValidHttpUrl(inpRedicretTo.val())) {
-				inpRedicretTo.parent().addClass('has-error');
-				inpRedicretTo.focus();
-				inpRedicretTo.parent().append('<span style="color: red;" class="help-txt">Geçerli bir adres girmediniz</span>');
-				is_valid = false;
-			}
 		}
         if(is_valid) {
             var form = $('#addItemForm');

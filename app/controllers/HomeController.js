@@ -1,3 +1,4 @@
+const res = require('express/lib/response');
 const Item = require('../models/Item');
 
 exports.homePage = async (req, res, next) => {
@@ -38,7 +39,24 @@ exports.redirect = async (req, res, next) => {
 
 	if (i == null) {
 		res.redirect('/welcome');
-	} else {
-		res.redirect(i.dataValues.redirectTo);
+		return;
 	}
+
+	if (isValidHttpUrl(i.dataValues.redirectTo)) {
+		res.redirect(i.dataValues.redirectTo);
+	} else {
+		res.render('showmessage', {
+			message: i.dataValues.redirectTo
+		});
+	}
+}
+
+function isValidHttpUrl(string) {
+	let url;
+	try {
+		url = new URL(string);
+	} catch (_) {
+		return false;  
+	}
+	return url.protocol === "http:" || url.protocol === "https:";
 }
