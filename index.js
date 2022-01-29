@@ -48,7 +48,12 @@ app.engine(
 	expressHbs({
 		layoutsDir: 'views/layouts/',
 		defaultLayout: 'web_layout',
-		extname: 'hbs'
+		extname: 'hbs',
+		helpers: {
+			indexChanger: function(value) {
+				return value + 1;
+			}
+		}
 	})
 );
 app.set('view engine', 'hbs');

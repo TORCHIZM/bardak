@@ -18,6 +18,11 @@ const User = sequelize.define('users', {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
+		permission: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			defaultValue: 1
+		},
 		resetToken: {
 			type: DataTypes.STRING,
 			allowNull: true

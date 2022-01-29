@@ -7,6 +7,7 @@
 		<table class="table">
 			<tr>
 				<th>#</th>
+				<th>Kullanıcı</th>
 				<th>QR Kod</th>
 				<th>Yönlendirme</th>
 				<th class="text-right">İşlemler</th>
@@ -14,7 +15,10 @@
 			{{#each items}}
 			<tr>
 				<td>
-					{{indexChanger @index}}
+					{{id}}
+				</td>
+				<td>
+					{{fullName}}
 				</td>
 				<td>
 					{{qrCode}}
@@ -35,3 +39,4 @@
 		</table>
 	</div>
 </div>
+</script>
