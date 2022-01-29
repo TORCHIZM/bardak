@@ -25,6 +25,6 @@
     "express-session": "^1.17.1",
     "mysql2": "^2.1.0",
     "sequelize": "^6.3.4",
-    "validator": "^13.1.1"
+    "validator": "^13.7.0"
   }
 }
